@@ -63,6 +63,79 @@
             //尝试在MP4容器中使用H.264视频+AAC音频
         }
     }
+
+    //检测本地存储
+    function supports_local_storage(){
+        return ('localStorage' in window) && window['localStorage'] !== null;
+    }
+    //or
+    if(Modernizr.localstorage){
+        //window.localStorage  存在！
+    }else{
+        //浏览器没有提供本地存储的原生支持
+        //也许可以尝试使用Gears或者其他的第三方解决方案
+    }
+
+    //检测webworker
+    function supports_web_workers(){
+        return !!window.Worker;
+    }
+    //or
+    if(Modernizr.webworkers){
+        //window.Worker存在！
+    }else{
+        //浏览器没有提供web worker的原生支持
+        //也许可以尝试使用Gears或者其他第三方解决方案
+    }
+
+    //检测是否支持离线应用
+    function supports_offline(){
+        return !!window.applicationCache;
+    }
+    //or
+    if(Modernizr.applicationcache){
+        //window.applicationCache 存在！
+    }else{
+        //浏览器没有提供原生的离线支持
+        //也许可以尝试使用Gears或者其他第三方解决方案
+    }
+
+    //检测是否支持地理位置
+    function supports_geolocation(){
+        return !!navigator.geolocation;
+    }
+    //or
+    if(Modernizr.geolocation){
+        //让我们找出你在哪儿？
+    }else{
+        //浏览器没有提供原生的地理位置支持
+        //也许可以尝试使用Gears或者其他第三方解决方案
+    }
+
+
+    //检测浏览器是否支持新的输入框
+    var i = document.createElement("input");
+    i.setAttribute("type","color");
+
+    //然后根据要检测的input的类型   i.type !== "text";这样去检测
+
+    //or
+    if(!Modernizr.inputtypes.data){//检测data类型的input是否支持
+        //浏览器没有提供<input type = "data">原生支持
+        //也许你需要自己用Dojo或者JqueryUI来构造一个类似的控件
+    }
+
+    //检测是否支持展位文本
+    function supports_input_placeholder(){
+        var i = document.createElement('input');
+        return 'placeholder' in i;
+    }
+    //or
+    if(Modernizr.input.placeholder){
+        //也许你已经看到占位文本了！
+    }else{
+        //占位文本还不被支持，退而使用脚本解决方案
+    }
 </script>
 </html>
 
