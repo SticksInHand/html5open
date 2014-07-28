@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Dive into HTML5</title>
+    <script src="../js/modernizr.js"></script>
+</head>
+<body>
+
+</body>
+
+<script type="text/javascript">
+    //检测canvas
+    function supports_canvas(){
+        return !!document.createElement('canvas').getContext;
+    }
+
+    //or
+    if(Modernizr.canvas){
+        //画画
+    }else{
+        //浏览器没有提供原生canvas支持
+    }
+
+    //检测canvas特定属性
+    function supports_canvas_text(){
+        if(!supports_canvas()){return false;}
+        var dummy_canvas = document.createElement('canvas');
+        var context = dummy_canvas.getContext('2d');
+        return typeof context.fillText == 'function';
+    }
+    //or
+    if(Modernizr.canvastext){
+        //画文字
+    }else{
+        //浏览器没有提供原生canvas文本支持
+    }
+
+    //检测video支持
+    function supports_video(){
+        return !!document.createElement('video').canPlayType;
+    }
+    //or
+    if(Modernizr.video){
+        //播放视频
+    }else{
+        //浏览器不提供video原生支持
+        //检查QuickTime或flash可否顶上
+    }
+    //检测mac和iPhone支持的受专利保护的格式：
+    function supports_h264_baseline_video(){
+        if(!supports_video()){return false;}
+        var v = document.createElement("video");
+        return v.canPlayType('video/mp4;codecs="avc1.42E01E,mp4a.40.2" ');
+    }
+
+    //or
+    if(Modernizr.video){
+        //可以播放视频了，但播放哪一种格式呢？
+        if(Modernizr.video.ogg){
+            //尝试在Ogg容器中使用Ogg Theora+Vorbis
+        }else if(Modernizr.video.h264){
+            //尝试在MP4容器中使用H.264视频+AAC音频
+        }
+    }
+</script>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
